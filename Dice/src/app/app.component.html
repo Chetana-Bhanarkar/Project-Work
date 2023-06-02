@@ -9,7 +9,7 @@
     <button (click)="Dice2()" name="sum2" [(ngModel)]="sum2">Dice2</button>
     {{sum2}}
    <div>
-      <button (click)="performCalculation()" [(ngModel)]="output">Output</button>
+      <!-- <button (click)="performCalculation()" [(ngModel)]="output">Output</button> -->
 {{output}}
     </div>
   </div>
@@ -22,12 +22,21 @@
 [(ngModel)]="diceNumberModel.numberOfDice" name="numberOfDice" placeholder="Enter number of dice" required />
   <input type="text" class="form-control" ngModel="dice.numberOfSide" id="DiceSideID"
 [(ngModel)]="diceSideModel.numberOfSide" name="numberOfSide" placeholder="Enter number of Side" required /> -->
+<input type="text" class="form-control" ngModel="dice.dice1" id="Dice1SideID"
+[(ngModel)]="diceSideModel.dice1" name="dice" placeholder="Enter the number and sides of dice" required />
+<p>number of Dice {{numberOfDice1}}</p>
+<p>number of side {{numberOfSides1}}</p>
+<button (click)="Dice1()">press</button>
+</form>
+<select name="" [(ngModel)]="selectedOperator">
+  <option [value]="undefined" disabled [selected]="true">Operator</option>
+  <option *ngFor="let operator of operators" [value]="operator">{{operator}}</option>
+</select>
+<form action="">
+<input type="text" class="form-control" ngModel="dice.dice2" id="Dice2SideID"
+[(ngModel)]="diceSideModel.dice2" name="dice" placeholder="Enter the number and sides of dice" required />
+<p>number of Dice {{numberOfDice2}}</p>
+<p>number of side {{numberOfSides2}}</p>
 
-<input type="text" class="form-control" ngModel="dice.dice" id="DiceSideID"
-[(ngModel)]="diceSideModel.dice" name="dice" placeholder="Enter the number and sides of dice" required />
-
-<p>number of Dice {{numberOfDice}}</p>
-<p>number of side {{numberOfSides}}</p>
-
-<button (click)="show()">press</button>
+<button (click)="Dice2()">press</button>
 </form>
