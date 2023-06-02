@@ -1,5 +1,33 @@
 <div class="container">
   <div>
-    <button (click)="random()">random</button>
+    <button (click)="Dice1()" name="sum1" [(ngModel)]="sum1">Dice1</button>
+    {{sum1}}
+    <select name="" [(ngModel)]="selectedOperator">
+      <option [value]="undefined" disabled [selected]="true">Operator</option>
+      <option *ngFor="let operator of operators" [value]="operator">{{operator}}</option>
+    </select>
+    <button (click)="Dice2()" name="sum2" [(ngModel)]="sum2">Dice2</button>
+    {{sum2}}
+   <div>
+      <button (click)="performCalculation()" [(ngModel)]="output">Output</button>
+{{output}}
+    </div>
   </div>
 </div>
+
+
+
+<form action="">
+  <!-- <input type="text" class="form-control" ngModel="dice.numberOfDice" id="DicenumberID"
+[(ngModel)]="diceNumberModel.numberOfDice" name="numberOfDice" placeholder="Enter number of dice" required />
+  <input type="text" class="form-control" ngModel="dice.numberOfSide" id="DiceSideID"
+[(ngModel)]="diceSideModel.numberOfSide" name="numberOfSide" placeholder="Enter number of Side" required /> -->
+
+<input type="text" class="form-control" ngModel="dice.dice" id="DiceSideID"
+[(ngModel)]="diceSideModel.dice" name="dice" placeholder="Enter the number and sides of dice" required />
+
+<p>number of Dice {{numberOfDice}}</p>
+<p>number of side {{numberOfSides}}</p>
+
+<button (click)="show()">press</button>
+</form>
