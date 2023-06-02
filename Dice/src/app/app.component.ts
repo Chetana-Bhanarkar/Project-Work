@@ -17,17 +17,20 @@ export class AppComponent {
   output : string | any ;
 
   dice : Dice = {
-    dice: ''
+    dice1: '',
+    dice2: ''
   };
 
-  numberOfDice : number | undefined ;
-  numberOfSides : number | undefined;
+  numberOfDice1 : number | undefined ;
+  numberOfSides1 : number | undefined;
+  numberOfDice2 : number | undefined ;
+  numberOfSides2 : number | undefined;
 
 
   operators = ['+','-'] ;
 
 // ============================================================================================
-  Dice1(){
+  // Dice1(){
 
   //   let sum = 0 ;
   //   let sides = this.numberOfSides[(Math.floor(Math.random() * (this.numberOfSides.length)))]
@@ -42,9 +45,9 @@ export class AppComponent {
 
   //  this.sum1 = (sum.toString());
   //  return this.sum1
-  }
+  // }
 
-  Dice2(){
+  // Dice2(){
 
   //  let sum = 0 ;
   //  let sides = this.numberOfSides[(Math.floor(Math.random() * (this.numberOfSides.length)))]
@@ -57,23 +60,61 @@ export class AppComponent {
   //   }
   //   this.sum2 = (sum.toString());
   //   return this.sum2
-  }
+  // }
 
 
-  performCalculation(){
-    let result = 0
-    if(this.selectedOperator == '+'){
-      result = parseInt(this.sum1) + parseInt(this.sum2)  ;
-    }
-    if(this.selectedOperator == '-'){
-      result = parseInt(this.sum1) - parseInt(this.sum2)  ;
-    }
+  // performCalculation(){
+  //   let result = 0
+  //   if(this.selectedOperator == '+'){
+  //     result = parseInt(this.sum1) + parseInt(this.sum2)  ;
+  //   }
+  //   if(this.selectedOperator == '-'){
+  //     result = parseInt(this.sum1) - parseInt(this.sum2)  ;
+  //   }
 
-    this.output = (result.toString());
+  //   this.output = (result.toString());
 
-  }
+  // }
 
 // ==============================================================================================
+
+
+
+  Dice1(){
+    let dice = this.dice.dice1
+    let val = dice.split('D') ;
+    this.numberOfDice1 = parseInt(val[0]);
+    this.numberOfSides1 = parseInt(val[1]);
+    console.log(`number of Dice ${this.numberOfDice1}`);
+    console.log(`number of sides ${this.numberOfSides1}`);
+    let sum = 0 ;
+    for(let i=0 ; i<this.numberOfDice1 ; i++){
+      let number =  Math.floor(Math.random() * this.numberOfSides1)+1
+      console.log(`random number ${number}`);
+      sum+=number ;
+    }
+    console.log(sum);
+
+  }
+
+  Dice2(){
+    let dice = this.dice.dice2
+    let val = dice.split('D') ;
+    this.numberOfDice2 = parseInt(val[0]);
+    this.numberOfSides2 = parseInt(val[1]);
+    console.log(`number of Dice ${this.numberOfDice2}`);
+    console.log(`number of sides ${this.numberOfSides2}`);
+    let sum = 0 ;
+    for(let i=0 ; i<this.numberOfDice2 ; i++){
+      let number =  Math.floor(Math.random() * this.numberOfSides2)+1
+      console.log(`random number ${number}`);
+      sum+=number ;
+    }
+    console.log(sum);
+
+  }
+
+
 
   public get diceNumberModel(): Dice {
     return this.dice;
@@ -88,21 +129,4 @@ export class AppComponent {
     this.dice = value;
   }
 
-
-  show(){
-    let dice = this.dice.dice;
-    let val = dice.split('D') ;
-    this.numberOfDice = parseInt(val[0]);
-    this.numberOfSides = parseInt(val[1]);
-    console.log(`number of Dice ${this.numberOfDice}`);
-    console.log(`number of sides ${this.numberOfSides}`);
-    let sum = 0 ;
-    for(let i=0 ; i<this.numberOfDice ; i++){
-      let number =  Math.floor(Math.random() * this.numberOfSides)+1
-      console.log(`random number ${number}`);
-      sum+=number ;
-    }
-    console.log(sum);
-     ;
-  }
 }
