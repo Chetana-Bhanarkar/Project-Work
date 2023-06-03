@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Dice } from './model/Dice';
+import { Dice } from './model/Dice.model';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ export class AppComponent {
   constructor(){}
 
 
-  selectedOperator: string | undefined;
+   selectedOperator: string | undefined;
 
   sum1 : string | any
   sum2 : string | any
@@ -93,7 +93,8 @@ export class AppComponent {
       console.log(`random number ${number}`);
       sum+=number ;
     }
-    console.log(sum);
+    this.sum1 = sum ;
+    console.log(this.sum1);
 
   }
 
@@ -110,10 +111,23 @@ export class AppComponent {
       console.log(`random number ${number}`);
       sum+=number ;
     }
-    console.log(sum);
+    this.sum2 = sum ;
+    console.log(this.sum2);
 
   }
 
+  performCalculation(){
+    let result = 0
+    if(this.selectedOperator == '+'){
+      result = parseInt(this.sum1) + parseInt(this.sum2)  ;
+    }
+    if(this.selectedOperator == '-'){
+      result = parseInt(this.sum1) - parseInt(this.sum2)  ;
+    }
+
+    this.output = (result.toString());
+    console.log(this.output);
+  }
 
 
   public get diceNumberModel(): Dice {
