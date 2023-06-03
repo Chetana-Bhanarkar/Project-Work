@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <div>
     <button (click)="Dice1()" name="sum1" [(ngModel)]="sum1">Dice1</button>
     {{sum1}}
@@ -9,34 +9,49 @@
     <button (click)="Dice2()" name="sum2" [(ngModel)]="sum2">Dice2</button>
     {{sum2}}
    <div>
-      <!-- <button (click)="performCalculation()" [(ngModel)]="output">Output</button> -->
+      <button (click)="performCalculation()" [(ngModel)]="output">Output</button>
 {{output}}
     </div>
   </div>
+</div> -->
+
+
+
+<div class="container-fluid d-flex justify-content-center my-5">
+  <div class="">
+    <form action="" class="p-5" style="background-image: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);">
+      <input type="text" class="form-control" ngModel="dice.dice1" id="Dice1SideID" [(ngModel)]="diceSideModel.dice1"
+        name="dice" placeholder="Number & Sides of dice" required />
+      <p>number of Dice : {{numberOfDice1}}</p>
+      <p>number of side : {{numberOfSides1}}</p>
+      <span>sum of Dice1 : {{sum1}}</span><br><br>
+      <button class="btn btn-success" (click)="Dice1()">Sum of random numbers </button>
+    </form>
+  </div>
+
+  <div class="align-self-center p-5 mx-5" style="background-image: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);">
+    <select name="" [(ngModel)]="selectedOperator" class="">
+      <option [value]="undefined" disabled [selected]="true">Operator</option>
+      <option *ngFor="let operator of operators" [value]="operator">{{operator}}</option>
+    </select>
+  </div>
+
+ <div>
+  <form action="" class="p-5" style="background-image: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);">
+    <input type="text" class="form-control" ngModel="dice.dice2" id="Dice2SideID" [(ngModel)]="diceSideModel.dice2"
+      name="dice" placeholder="Number and Sides of dice" required />
+    <p>number of Dice : {{numberOfDice2}}</p>
+    <p>number of side : {{numberOfSides2}}</p>
+    <span>sum of Dice1 : {{sum2}}</span><br><br>
+    <button class="btn btn-success" (click)="Dice2()">Sum of random numbers</button>
+  </form>
+ </div>
 </div>
 
+<div class="d-flex justify-content-evenly me-5 ">
+  <button class="btn btn-success" (click)="performCalculation()" [(ngModel)]="output">Output</button>
+</div>
 
-
-<form action="">
-  <!-- <input type="text" class="form-control" ngModel="dice.numberOfDice" id="DicenumberID"
-[(ngModel)]="diceNumberModel.numberOfDice" name="numberOfDice" placeholder="Enter number of dice" required />
-  <input type="text" class="form-control" ngModel="dice.numberOfSide" id="DiceSideID"
-[(ngModel)]="diceSideModel.numberOfSide" name="numberOfSide" placeholder="Enter number of Side" required /> -->
-<input type="text" class="form-control" ngModel="dice.dice1" id="Dice1SideID"
-[(ngModel)]="diceSideModel.dice1" name="dice" placeholder="Enter the number and sides of dice" required />
-<p>number of Dice {{numberOfDice1}}</p>
-<p>number of side {{numberOfSides1}}</p>
-<button (click)="Dice1()">press</button>
-</form>
-<select name="" [(ngModel)]="selectedOperator">
-  <option [value]="undefined" disabled [selected]="true">Operator</option>
-  <option *ngFor="let operator of operators" [value]="operator">{{operator}}</option>
-</select>
-<form action="">
-<input type="text" class="form-control" ngModel="dice.dice2" id="Dice2SideID"
-[(ngModel)]="diceSideModel.dice2" name="dice" placeholder="Enter the number and sides of dice" required />
-<p>number of Dice {{numberOfDice2}}</p>
-<p>number of side {{numberOfSides2}}</p>
-
-<button (click)="Dice2()">press</button>
-</form>
+<div class="d-flex justify-content-evenly" style="margin-right: -1rem!important">
+  <span class="">{{output}}</span>
+</div>
