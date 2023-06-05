@@ -1,0 +1,59 @@
+
+
+<div class="container-fluid">
+  <div class="container-fluid bg-white">
+
+    <div class="row mt-4" style="height: 500px;">
+
+      <div class="col"></div>
+
+      <div class="col-7 bg-white shadow">
+
+        <div class="card bg-info mt-4 border-0">
+          <h3 class="text-white ps-3 pt-2 pb-2 text-center">To do list</h3>
+        </div>
+
+        <div class="shadow">
+          <div class="input-group p-4">
+            <textarea rows="1" cols="45" class="form-control border-0 rounded mx-2 shadow" placeholder="Enter todo task" name="work" ngModel="_todoModel.work" [(ngModel)]="todo_list_model.work"></textarea>
+            <input  type="date" class="form-control rounded border-0 mx-2 shadow" placeholder="choose date" name="date" ngModel="_todoModel.date" [(ngModel)]="todo_list_model.date">
+            <input type="text" class="form-control rounded mx-2 border-0 shadow" placeholder="Status" name="status" ngModel="_todoModel.status" [(ngModel)]="todo_list_model.status">
+            <button class="btn btn-outline-info rounded"  type="button" (click)="add()">+</button>
+          </div>
+        </div>
+
+        <h4 class="text-info mt-4">Tasks : </h4>
+
+        <div style="overflow-y: auto; height: 300px;" class="my-4">
+          <div class="m-3">
+            <div class="p-2 shadow border-0">
+              <table class="table">
+                <thead style="position: sticky; top: 0">
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">work</th>
+                    <th scope="col">date</th>
+                    <th scope="col">status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of taskArr">
+                    <td  style="width: 20px; padding: 0 10px;">{{item.id}}</td>
+                    <td  style="width: 3rem;">{{item.work}}</td>
+                    <td  style="width: 10px;">{{item.date}}</td>
+                    <td  style="width: 10px;">{{item.status}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col"></div>
+
+    </div>
+
+  </div>
+
+</div>
