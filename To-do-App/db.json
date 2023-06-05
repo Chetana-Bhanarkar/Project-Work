@@ -1,0 +1,42 @@
+{
+  "list": [
+    {
+      "id": 1,
+      "work": "complete the todo list task ",
+      "date": "",
+      "day": "",
+      "status": "todo"
+    },
+    {
+      "id": 2,
+      "work": "complete the dice game",
+      "date": "",
+      "day": "",
+      "status": "todo"
+    },
+    {
+      "id": 3,
+      "work": "hello",
+      "date": "",
+      "day": "",
+      "status": "todo"
+    },
+    {
+      "id": 4,
+      "work": "working on dice game",
+      "date": "2023-06-23",
+      "day": "",
+      "status": "todo"
+    },
+    {
+      "id": 5,
+      "work": "Ticekt Book",
+      "date": "2023-06-04",
+      "day": "",
+      "status": "todo"
+    },
+    {
+      "id": 6
+    }
+  ]
+}
