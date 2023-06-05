@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToDo } from './model/To-do.model';
 import { TodoService } from './service/todo.service';
 import { finalize, subscribeOn } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,9 @@ import { finalize, subscribeOn } from 'rxjs/operators';
 export class AppComponent implements OnInit {
 
 
-  constructor(private todoService: TodoService) { }
+  constructor(
+    private todoService: TodoService,
+    private toast : ToastrService){}
 
   title = 'To-do-App';
   taskArr: ToDo[] = [];
@@ -32,7 +35,7 @@ export class AppComponent implements OnInit {
       this.ngOnInit()
 
     }, err => {
-      alert(err)
+      alert('error!')
     })
   }
 
@@ -48,12 +51,29 @@ add(){
     this.todoService.getList().subscribe((response:any) => {
       console.log(response);
       this.taskArr = response ;
+      alert('Task inserted successfully')
 
     }, err => {
-      alert('Unable to get list...');
+      alert('Unable to get list')
     })
   }
 
+  editTask(todo : ToDo){
+    this.todoService.updateTask(todo).subscribe(res => {
+      this.ngOnInit();
+    },err=>{
+      alert("Failed to edit")
+    })
+  }
+
+  deleteTask(todo : ToDo){
+    this.todoService.deleteTask(todo).subscribe(res => {
+      this.ngOnInit();
+    },err=>{
+      alert("Unable to delete")
+
+    })
+  }
 
   public get todo_list_model(): ToDo {
     return this._todoModel
