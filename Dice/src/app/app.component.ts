@@ -133,7 +133,7 @@ export class AppComponent {
   public get diceNumberModel(): Dice {
     return this.dice;
   }
-  public set diceNumberModel(value: Dice){
+  public set diceNumberModel(value : Dice){
     this.dice = value;
   }
   public get diceSideModel(): Dice {
