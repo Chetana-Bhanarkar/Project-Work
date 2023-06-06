@@ -127,7 +127,7 @@ export class AppComponent {
 
     this.output = (result.toString());
     console.log(this.output);
-  }
+  }``
 
 
   public get diceNumberModel(): Dice {
