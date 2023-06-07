@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   title = 'To-do-App';
   taskArr: ToDo[] = [];
   addTask: string = ' ';
+  editTaskValue : string|any = '';
   isLoggedIn: boolean = false;
   loginBtnSpinner: boolean = false;
 
@@ -27,6 +28,8 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.addTask = ' ';
+    this.editTaskValue = ' ';
     this.getList() ;
   }
 
@@ -51,24 +54,36 @@ add(){
     this.todoService.getList().subscribe((response:any) => {
       console.log(response);
       this.taskArr = response ;
-      alert('Task inserted successfully')
+      // alert('Task inserted successfully')
 
     }, err => {
       alert('Unable to get list')
     })
   }
 
-  editTask(todo : ToDo){
-    this.todoService.updateTask(todo).subscribe(res => {
+  editTask(){
+    this._todoModel.work = this.editTaskValue;
+    // this._todoModel.date = this.editTaskValue;
+    // this._todoModel.status = this.editTaskValue;
+    this.todoService.updateTask( this._todoModel).subscribe(res => {
       this.ngOnInit();
     },err=>{
       alert("Failed to edit")
     })
   }
 
+  call(todo : ToDo){
+    this._todoModel = todo;
+    this.editTaskValue = todo.work ;
+    // this.editTaskValue = todo.date ;
+    // this.editTaskValue = todo.status ;
+    console.log('call');
+  }
+
   deleteTask(todo : ToDo){
     this.todoService.deleteTask(todo).subscribe(res => {
       this.ngOnInit();
+      alert('delete data successfully')
     },err=>{
       alert("Unable to delete")
 
