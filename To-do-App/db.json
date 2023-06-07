@@ -2,41 +2,36 @@
   "list": [
     {
       "id": 1,
-      "work": "complete the todo list task ",
-      "date": "",
-      "day": "",
-      "status": "todo"
-    },
-    {
-      "id": 2,
-      "work": "complete the dice game",
-      "date": "",
-      "day": "",
-      "status": "todo"
-    },
-    {
-      "id": 3,
-      "work": "hello",
-      "date": "",
-      "day": "",
-      "status": "todo"
-    },
-    {
-      "id": 4,
-      "work": "working on dice game",
-      "date": "2023-06-23",
-      "day": "",
-      "status": "todo"
-    },
-    {
-      "id": 5,
       "work": "Ticekt Book",
       "date": "2023-06-04",
       "day": "",
       "status": "todo"
     },
     {
-      "id": 6
+      "id": 2,
+      "work": "complete all tasks",
+      "date": "2023-06-05",
+      "day": "",
+      "status": "pending"
+    },
+    {
+      "id": 3,
+      "work": "bus-ticket book",
+      "day": "",
+      "status": "pending"
+    },
+    {
+      "work": "complete the notes",
+      "date": "2023-06-03",
+      "id": 4,
+      "status" : "completed"
+    },
+    {
+      "work": "deploy project",
+      "date": "2023-06-27",
+      "id": 5 ,
+      "status" : "pending"
     }
+    
   ]
 }
