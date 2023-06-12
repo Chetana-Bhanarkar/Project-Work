@@ -9,6 +9,7 @@ import {NgIf} from '@angular/common';
 })
 export class AppComponent {
   title = 'angular-material-form';
+  acceptedTypes = [ 'application/csv'];
   name :string =""
   file:any;
 
@@ -17,7 +18,14 @@ export class AppComponent {
   }
   getFile(event : any){
     this.file = event.target.files[0];
-    console.log("files : ", this.file );
+    const fileType = this.file.type;
+    if (!this.acceptedTypes.includes(fileType)) {
+      event.target.value = null;
+      this.file.form.controls['file'].setErrors({ fileType: 'Invalid file type. Only JPEG, PNG, and PDF files are allowed.' });
+    } else {
+      console.log("files : ", this.file );
+
+    }
 
   }
 
@@ -29,21 +37,7 @@ export class AppComponent {
     console.log(formData);
 
   }
-  selectedFile: File | undefined;
 
-  handleFileInput(event: any) {
-    this.selectedFile = event.target.files[0];
-  }
-
-  uploadFile() {
-    if (this.selectedFile) {
-      console.log('Selected File:', this.selectedFile);
-      // Perform any additional operations with the file
-    } else {
-      console.log('No file selected');
-    }
-  }
-  // ======================================================
 
   email = new FormControl('', [Validators.required, Validators.email]);
 
