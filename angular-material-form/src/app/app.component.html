@@ -1,35 +1,78 @@
-<form>
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>
-        Application Form
-      </mat-card-title>
-    </mat-card-header>
-
-    <mat-card-content>
-      <div class="row">
-        <div class="col-sm-6">
-          <mat-form-field>
-            <mat-label>First name</mat-label>
-            <input matInput>
-          </mat-form-field>
-        </div>
-        <div class="col-sm-6">
-          <mat-form-field>
-            <input matInput placeholder="last name" />
-          </mat-form-field>
-        </div>
+<div class="container-fluid p-5 bg-light mt-2">
+<h1 class="text-center text-dark fw-bold fst-italic">Stepper form</h1>
+<mat-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Fill out your name</ng-template>
+    <div class="row mt-5">
+      <div class="col-4">
+        <mat-form-field>
+          <mat-label>First name</mat-label>
+          <input matInput placeholder="first name" formControlName="firstCtrl" required>
+        </mat-form-field>
       </div>
+      <div class="col-4">
+        <mat-form-field>
+          <mat-label>Middle name</mat-label>
+          <input matInput placeholder="Middle name" formControlName="firstCtrl" required>
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field>
+          <mat-label>last Name</mat-label>
+           <input matInput placeholder="Last name" formControlName="firstCtrl" required>
+         </mat-form-field>
+      </div>
+    </div>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" label="Fill out personal information">
+    <form [formGroup]="secondFormGroup">
+      <div class="row mt-5">
+        <div class="col-sm-4">
+          <mat-form-field>
+            <mat-label>Enter your email</mat-label>
+            <input matInput placeholder="pat@example.com" [formControl]="email" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </div>
 
+        <div class="col-sm-4">
+          <mat-form-field>
+            <mat-label>DOB</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
 
-      <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
           <mat-form-field>
             <textarea matInput placeholder="Address"></textarea>
           </mat-form-field>
         </div>
+        
 
       </div>
-    </mat-card-content>
-  </mat-card>
-</form>
+      <div class="mt-5">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+
+    <ng-template matStepLabel>Done</ng-template>
+    <p>Done</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-stepper>
+
+</div>
