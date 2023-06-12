@@ -57,7 +57,7 @@
         </div>
         <div class="col-sm-6">
           <mat-form-field class="">
-            <span *ngIf="errorMessage" class="error-message" style="color: red; font-size: 10px;">{{ errorMessage }}</span>
+            <span *ngIf="errorMessage" class="error-message" style="color: red; font-size: 15px;">{{ errorMessage }}</span>
             <input matInput type="text" (change)="getName(name.value)"  #name /> <br />
             <input  type="file" (change)="getFile($event)" /> <br /><br />
           </mat-form-field>
