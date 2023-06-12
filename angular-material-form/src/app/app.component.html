@@ -55,7 +55,17 @@
             <textarea matInput placeholder="Address"></textarea>
           </mat-form-field>
         </div>
-        
+        <div class="col-sm-6">
+          <mat-form-field class="">
+            <input matInput type="text" (change)="getName(name.value)" #name /> <br />
+            <input  type="file" (change)="getFile($event)" /> <br /><br />
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <button mat-raised-button color="primary" (click)="submit()" value="Upload file" class="ms-4">Upload</button>
+          </div>
+        </div>
 
       </div>
       <div class="mt-5">
