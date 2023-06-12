@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {FormControl, Validators, FormsModule, ReactiveFormsModule, FormBuilder} from '@angular/forms';
-import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -14,18 +13,27 @@ export class AppComponent {
   file:any;
 
   getName(name:string){
-    this.name = name ;
+    this.file = name ;
   }
+
   getFile(event : any){
     this.file = event.target.files[0];
-    const allowedFileTypes = ['application/csv']; // Define the allowed file types here
+    const allowedFileTypes = ['application/pdf'];
+    const fileSizeInBytes = this.file.size
+    const allowedFileSizeInBytes =102
+    // const allowedFileSizeInBytes =1048576
 
-    if (allowedFileTypes.indexOf(this.file.type) === -1) {
-      this.errorMessage = '* Invalid file type. Please upload CSV';
+    if (fileSizeInBytes > allowedFileSizeInBytes && allowedFileTypes.indexOf(this.file.type) === -1 ){
+      this.errorMessage = '*Invalid, file type should be PDF and size should be less than 1mb .';
       event.target.value = null;
-    } else {
-      // Proceed with file upload logic
-      this.errorMessage = " "; // Reset the error message if the file type is valid
+    }else if (allowedFileTypes.indexOf(this.file.type) === -1){
+      this.errorMessage = '*Invalid file type. Please upload pdf';
+      event.target.value = null;
+    }else if (fileSizeInBytes > allowedFileSizeInBytes){
+      this.errorMessage = '*File size exceeds the limit (1mb).';
+      event.target.value = null;
+    }else{
+      this.errorMessage = " ";
       console.log("files : ", this.file );
     }
 
