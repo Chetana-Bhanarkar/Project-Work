@@ -20,8 +20,7 @@ export class AppComponent {
     this.file = event.target.files[0];
     const allowedFileTypes = ['application/pdf'];
     const fileSizeInBytes = this.file.size
-    const allowedFileSizeInBytes =102
-    // const allowedFileSizeInBytes =1048576
+    const allowedFileSizeInBytes =1048576
 
     if (fileSizeInBytes > allowedFileSizeInBytes && allowedFileTypes.indexOf(this.file.type) === -1 ){
       this.errorMessage = '*Invalid, file type should be PDF and size should be less than 1mb .';
@@ -36,19 +35,16 @@ export class AppComponent {
       this.errorMessage = " ";
       console.log("files : ", this.file );
     }
-
   }
 
   submit(){
     let formData = new FormData();
     formData.set('name' , this.name);
     formData.set('file',this.file)
-
     console.log(formData);
-
   }
 
-
+  
   email = new FormControl('', [Validators.required, Validators.email]);
 
   getErrorMessage() {
