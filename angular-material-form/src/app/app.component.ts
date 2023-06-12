@@ -9,7 +9,7 @@ import {NgIf} from '@angular/common';
 })
 export class AppComponent {
   title = 'angular-material-form';
-  acceptedTypes = [ 'application/csv'];
+  errorMessage:string | undefined ;
   name :string =""
   file:any;
 
@@ -18,13 +18,15 @@ export class AppComponent {
   }
   getFile(event : any){
     this.file = event.target.files[0];
-    const fileType = this.file.type;
-    if (!this.acceptedTypes.includes(fileType)) {
-      event.target.value = null;
-      this.file.form.controls['file'].setErrors({ fileType: 'Invalid file type. Only JPEG, PNG, and PDF files are allowed.' });
-    } else {
-      console.log("files : ", this.file );
+    const allowedFileTypes = ['application/csv']; // Define the allowed file types here
 
+    if (allowedFileTypes.indexOf(this.file.type) === -1) {
+      this.errorMessage = '* Invalid file type. Please upload CSV';
+      event.target.value = null;
+    } else {
+      // Proceed with file upload logic
+      this.errorMessage = " "; // Reset the error message if the file type is valid
+      console.log("files : ", this.file );
     }
 
   }
